@@ -1,0 +1,12 @@
+<mat-card>
+  <form (submit)="addTodo()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Adicionar nova tarefa</mat-label>
+      <input matInput [(ngModel)]="title" name="title" placeholder="Digite sua tarefa">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">
+      Adicionar
+    </button>
+  </form>
+</mat-card>

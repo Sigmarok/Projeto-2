@@ -1,0 +1,41 @@
+<div class="todo-container">
+  <!-- Coluna de tarefas pendentes -->
+  <mat-card class="todo-list-card">
+    <mat-card-header>
+      <mat-card-title>Tarefas Pendentes</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div *ngIf="pendingTodos.length > 0; else noPendingTasks">
+        <div *ngFor="let todo of pendingTodos" class="todo-item">
+          <mat-checkbox (change)="toggleComplete(todo.id)">{{ todo.title }}</mat-checkbox>
+        </div>
+      </div>
+
+      <!-- Exibe se não houver tarefas pendentes -->
+      <ng-template #noPendingTasks>
+        <p>Não há tarefas pendentes.</p>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Coluna de tarefas concluídas -->
+  <mat-card class="todo-list-card">
+    <mat-card-header>
+      <mat-card-title>Tarefas Concluídas</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div *ngIf="completedTodos.length > 0; else noCompletedTasks">
+        <div *ngFor="let todo of completedTodos" class="todo-item completed">
+          <mat-checkbox [checked]="true" (change)="toggleComplete(todo.id)">{{ todo.title }}</mat-checkbox>
+        </div>
+      </div>
+
+      <!-- Exibe se não houver tarefas concluídas -->
+      <ng-template #noCompletedTasks>
+        <p>Não há tarefas concluídas.</p>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+</div>
